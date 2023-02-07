@@ -1,0 +1,13 @@
+{% extends "travels/base.html"%}
+{% block content %}
+  <p>Destinations</p>
+  <ul>
+      {% for destination in destinations %}
+        <li>
+            <a href="{% url 'travels:destination' destination.id %}">{{destination}}</a>
+        </li>
+      {%empty%}
+        <li>No destinations has been added</li>
+      {% endfor %}
+  </ul>
+{% endblock content %}

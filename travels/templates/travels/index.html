@@ -1,0 +1,101 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>index</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body, html {
+  height: 100%;
+  margin: 0;
+  }
+  
+    .bg {
+  /* The image used */
+  background-image: url({% static 'images/front2.jpg' %});
+
+  /* Full height */
+  height: 100%; 
+
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  h2{
+    font-size: 3.5em;
+    font-weight: 500;
+}
+  p{
+    
+    font-size: 1.4em;
+    font-weight: bold;
+  
+}
+  h1{
+    font-weight: 900;
+    font-size: 80px;
+    font-style: italic;
+    
+}
+.center {
+ text-align: center
+}
+
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-inverse" >
+  <div class="container-fluid">
+    
+
+    <div class="collapse navbar-collapse" >
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{%url 'travels:index'%}">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="{%url 'travels:destinations'%}">Destinations
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {% for destination in destinations %}
+               <li>
+                 <a href="{% url 'travels:destination' destination.id %}">{{destination}}</a>
+               </li>
+             {%empty%}
+               <li>No destinations has been added</li>
+            {% endfor %}
+          </ul>
+        </li>
+        
+        <li><a href="{% url 'travels:tips'%}">Tips</a></li>
+         
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+  
+
+<div class="bg">
+
+
+  <div class="row content">
+    
+    
+      <h1 class='center'>ROADMANIA</h1>
+
+                            <!-- Divider -->
+      <hr class="hr-light">
+      
+    
+  </div>
+</div>
+
+
+
+</body>
+</html>
